@@ -1,0 +1,4 @@
+flask
+sqlalchemy
+confluent-kafka
+psycopg2-binary

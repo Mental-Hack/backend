@@ -1,0 +1,12 @@
+{
+  "UPLOAD_FOLDER": "./uploads",
+  "DATABASE_URL": "postgresql://user:password@localhost:5432/upload_db",
+  "KAFKA_SERVERS": "localhost:9092",
+  "KAFKA_USERNAME": "kafka_user",
+  "KAFKA_PASSWORD": "kafka_password",
+  "KAFKA_SECURITY_PROTOCOL": "SASL_SSL",
+  "KAFKA_SASL_MECHANISM": "PLAIN",
+  "EVALUATIONS_TOPIC": "evaluations",
+  "PERFORMANCE_TOPIC": "performance",
+  "KAFKA_PARTITION_COUNT": 3
+}

@@ -1,0 +1,79 @@
+version: "3.8"
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: upload_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  upload_service:
+    build:
+      context: .
+      dockerfile: Docker/imp/upload/Dockerfile
+    container_name: upload_service
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres:5432/upload_db
+    ports:
+      - "5001:5001"
+    depends_on:
+      - postgres
+
+  evaluate_service:
+    build:
+      context: .
+      dockerfile: Docker/imp/evaluate/Dockerfile
+    container_name: evaluate_service
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres:5432/upload_db
+      KAFKA_SERVERS: kafka:9092
+    ports:
+      - "5002:5002"
+    depends_on:
+      - kafka
+      - postgres
+
+  settings_service:
+    build:
+      context: .
+      dockerfile: Docker/imp/settings/Dockerfile
+    container_name: settings_service
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres:5432/upload_db
+    ports:
+      - "5003:5003"
+    depends_on:
+      - postgres
+
+
+
+volumes:
+  postgres_data:

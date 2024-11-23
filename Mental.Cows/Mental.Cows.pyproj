@@ -1,0 +1,54 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>cedd65e9-e9bb-465e-adea-13d83d6f6c81</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>evaluate_service.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Mental.Cows</Name>
+    <RootNamespace>Mental.Cows</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="files_service.py" />
+    <Compile Include="evaluate_service.py" />
+    <Compile Include="settings_service.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.json" />
+    <Content Include="Docker\imp\evaluate\Dockerfile" />
+    <Content Include="docker-compose.yml" />
+    <Content Include="Docker\imp\evaluate\requirements.txt" />
+    <Content Include="Docker\imp\settings\Dockerfile" />
+    <Content Include="Docker\imp\settings\requirements.txt" />
+    <Content Include="Docker\imp\upload\Dockerfile" />
+    <Content Include="Docker\imp\upload\requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docker\" />
+    <Folder Include="Docker\imp\" />
+    <Folder Include="Docker\imp\evaluate\" />
+    <Folder Include="Docker\imp\settings\" />
+    <Folder Include="Docker\imp\upload\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

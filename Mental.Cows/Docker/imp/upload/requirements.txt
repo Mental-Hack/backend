@@ -1,0 +1,4 @@
+flask
+aiofiles
+sqlalchemy
+psycopg2-binary
