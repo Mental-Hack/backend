@@ -24,6 +24,7 @@
     <Compile Include="files_service.py" />
     <Compile Include="evaluate_service.py" />
     <Compile Include="settings_service.py" />
+	<Compile Include="cow_to_front.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.json" />

@@ -72,6 +72,25 @@ services:
       - "5003:5003"
     depends_on:
       - postgres
+      
+      flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres:5432/upload_db
+      KAFKA_SERVERS: kafka:9092
+      NOTEBOOK_PATH=/app/cow_analysis.ipynb
+      BREEDING_MODEL_PATH=/app/breeding_model.pth
+      COWS_MODEL_PATH=/app/cows_model.py
+    depends_on:
+      - kafka
+      - postgres
 
 
 

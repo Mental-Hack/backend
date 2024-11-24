@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')
+
+$green: #89e159
+$dark: rgb(20, 27, 37)
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  margin: 0
+  font-weight: normal
+
+
+body
+  min-height: 100vh
+  color: var(--color-text)
+  line-height: 1.6
+  font-family: 'Ubuntu', 'Helvetica Neue', sans-serif
+  font-size: 15px
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  background-color: rgb(20, 27, 37)
+  /* background: linear-gradient(301.86deg, #1e4e4e 16.05%, #1f2431 75.16%), #1f2431; */
+  color: white
+
+#app
+  max-width: 1280px
+  margin: 0 auto
+  font-weight: normal
+  height: 100vh
+
+
+ul
+  list-style: none
+  padding: 0
+
+
+a,
+.green
+  text-decoration: none
+  transition: 0.4s
+  padding: 3px
+
+
+.large-button
+  width: 100%
+  max-width: 330px
+
+
+main
+  padding: 20px 20px 30px
+  max-width: 500px
+  margin: 0 auto
+
+
+h1,
+h2,
+.subtitle
+  text-align: center
+
+
+.card
+  width: 100%
+  max-width: 500px
+  margin: 0 auto 20px
+
+
+.upload
+  max-width: 500px
+  margin: 0 auto
+
+.loader
+  height: 100vh
+
+form
+  margin: 0 auto
+
+.el-loading-spinner .path
+  stroke: $green !important
+  stroke-width: 5px !important
+
+.el-loading-mask
+  height: 100%
+  min-height: 100vh
+
+.el-loading-mask
+  background: rgba($dark, 0.85) !important
+
+.el-slider__bar
+  background-color: $green !important
+
+.el-slider__button
+  border: 1px solid $green !important
+  background-color: $green !important
+
+.el-button.is-disabled
+  background-color: rgba($green, 0.4) !important
+  border: none !important
+  color: $dark !important
+
+.el-switch__action
+  background-color: $dark !important
+
+.el-switch.is-checked .el-switch__core
+  background: rgba($green, 0.9) !important
+  border: none !important

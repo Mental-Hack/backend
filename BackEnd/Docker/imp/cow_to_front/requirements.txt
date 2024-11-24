@@ -1,0 +1,8 @@
+flask
+pandas
+torch
+sqlalchemy
+kafka-python
+nbconvert
+nbformat
+psycopg2-binary
